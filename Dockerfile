@@ -7,7 +7,8 @@ RUN mvn dependency:go-offline -B
 
 # Copy source và build WAR
 COPY src ./src
-RUN rm -rf target && mvn clean package -U -DskipTests
+RUN rm -rf target
+RUN mvn clean package -U -DskipTests
 
 #Stage 2: Build
 FROM tomcat:9.0-jdk21-temurin
