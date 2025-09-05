@@ -17,7 +17,7 @@ WORKDIR /usr/local/tomcat
 RUN sed -i 's/port="8005"/port="-1"/' conf/server.xml
 RUN rm -rf webapps/*
 
-COPY target/*.war webapps/ROOT.war
+COPY --from=build /app/target/*.war webapps/ROOT.war
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
